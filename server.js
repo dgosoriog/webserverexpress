@@ -1,14 +1,34 @@
 const express = require('express');
 const app = express();
-app.use(express.static(__dirname + '/public'));
+const hbs = require('hbs');
 
-// app.get('/', function(req, res) {
-//     res.send('Hello World')
-// });
-app.get('/about', (req, res) => {
-    res.send('Acerca de');
+
+app.use(express.static(__dirname + '/public'));
+//npm install hbs --save
+
+//Para manejar parciales
+hbs.registerPartials(__dirname + '/views/parciales');
+//Express HBS Engine
+app.set('view engine', 'hbs');
+
+require('./hbs/helpers');
+//para heroku
+const port = process.env.PORT || 3000;
+app.get('/', function(req, res) {
+    //  res.send('Hello World')
+    res.render('home', {
+        nombre: "diego",
+
+    });
 });
-app.listen(3000, () => {
+app.get('/about', (req, res) => {
+    res.render('about', {
+
+    });
+    //res.send('Acerca de');
+});
+
+app.listen(port, () => {
     console.log('Escuchando peticiones en el puerto 3000');
 });
 //1. Probar webserver
