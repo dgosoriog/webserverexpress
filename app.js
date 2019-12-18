@@ -4,7 +4,7 @@ const http = require('http');
 http.createServer((req, res) => {
 
     //escribir la cabecera de la respuesta
-    res.writeHead(200, { 'Content-Type': 'applicaion/json' });
+    res.writeHead(200, { 'Content-Type': 'application/json' });
     //objeto de salida
     let salida = {
             nombre: 'Diego',
@@ -21,3 +21,9 @@ http.createServer((req, res) => {
 }).listen(8085);
 
 console.log("Escuchando en el puerto 8085");
+//-------------------------
+
+const axios = require('axios');
+
+const ubicacion = require('./controlador/ubicacion');
+const clima = require('./controlador/clima');
