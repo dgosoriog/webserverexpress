@@ -1,7 +1,7 @@
-const express = require('express');
-const app = express();
-const hbs = require('hbs');
-
+const express = require('express');// importar express
+const app = express(); //crear instancia de express
+const hbs = require('hbs');//importar libreria hbs
+//Para obtener el clima de 4 ciudades
 let c1
 let c2
 let c3
@@ -24,9 +24,9 @@ hbs.registerPartials(__dirname + '/views/parciales');
 app.set('view engine', 'hbs');
 
 require('./hbs/helpers');
-//para heroku
+//configurar puerto para heroku
 const port = process.env.PORT || 3000;
-
+//Llamando a la funcion getInfo
 getInfo("Quito").then(res => {
     c1 = res;
 }).catch(err => console.log(err));
@@ -43,7 +43,9 @@ getInfo("Ankara").then(res => {
     c4 = res;
 }).catch(err => console.log(err));
 
-
+//RUTAS
+//Con get. No recibe parametros
+//Respuesta en formato JSON
 app.get('/', function(req, res) {
     //  res.send('Hello World')
     res.render('home', {
@@ -53,6 +55,8 @@ app.get('/', function(req, res) {
 
     });
 });
+//Con get. No recibe parametros
+//Respuesta en formato JSON
 app.get('/about', (req, res) => {
     res.render('about', {
         ciudad3: c3,
@@ -61,6 +65,7 @@ app.get('/about', (req, res) => {
     //res.send('Acerca de');
 });
 
+//Probando el puerto
 app.listen(port, () => {
     console.log('Escuchando peticiones en el puerto 3000');
 });
