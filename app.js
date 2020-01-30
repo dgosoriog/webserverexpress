@@ -23,7 +23,6 @@ http.createServer((req, res) => {
 console.log("Escuchando en el puerto 8085");
 //-------------------------
 
-const axios = require('axios');
-
-const ubicacion = require('./controlador/ubicacion');
-const clima = require('./controlador/clima');
+//const axios = require('axios');
+//const ubicacion = require('./controlador/ubicacion');
+//const clima = require('./controlador/clima');
